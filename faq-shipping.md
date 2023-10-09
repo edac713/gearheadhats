@@ -7,7 +7,7 @@ It’s easy, just select a hat and patch, add to your cart and you’re done. We
 Not yet but we have solid plans to open a local studio.
 ## Do we have any Social Media pages?
 Yes, find & like us on Instagram @gearheadhats. We’ll be posting pictures/reels of available patches on Instagram simultaneously with our website. 
-## Do we sell patches by themselves? 
+## Do we sell patches or hats by themselves? 
 Yes we do! Although why take the fun out of it? Customizing your own personal hat is a great experience. 
 ## Do we offer sewing service for your own personal patches? 
 We will eventually provide a service like that but no not currently, our initial business model is not set up for this yet. 
