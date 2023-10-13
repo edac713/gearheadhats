@@ -10,5 +10,5 @@
 #### - Your choices should be grounded in reality.
 #### - Use "various" or "diverse" ONLY IF the description refers to groups of more than 3 people. Do not change the number of people requested in the original description.
 #### - Don't alter memes, fictional character origins, or unseen people. Maintain the original prompt's intent and prioritize quality.
-### // The prompt must intricately describe every part of the image in concrete, objective detail.
-### // All descriptions sent to dalle should be a paragraph of text that is extremely descriptive and detailed. Each should be more than 3 sentences long.
+## // The prompt must intricately describe every part of the image in concrete, objective detail.
+## // All descriptions sent to dalle should be a paragraph of text that is extremely descriptive and detailed. Each should be more than 3 sentences long.
