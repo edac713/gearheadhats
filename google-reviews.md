@@ -1,5 +1,4 @@
 ### John Capello
-#### 1 review · 1 photo
 ⭐⭐⭐⭐⭐
 *Posted 2 months ago*
 
