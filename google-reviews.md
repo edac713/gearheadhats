@@ -50,7 +50,7 @@ a month ago
 ★★★★★
 a year ago
 
-> Gearhead hats are the best! Their selection of patches are vast, their hats are great quality, and I love how they give you the choice to put a chord on your hat. It really gives the hat that throwback look! The shipping was unbelievably ...
+> Gearhead hats are the best! Their selection of patches are vast, their hats are great quality, and I love how they give you the choice to put a chord on your hat. It really gives the hat that throwback look! The shipping was unbelievably fast! I’ve made a custom hat through another brand in the past, and the sewing/shipping took them over a month! I was definitely surprised when my hat from Gearhead hats came in within the week! The only downside was the price-but, for the original patches and the custom work to have a 1 out of 1 hat, it’s worth it. The last thing I’ll say is that I wore my hat out to the bar two nights ago and was receiving compliments left and right. If you don’t believe, follow them on Instagram and see their work for yourself!
 
 ---
 
@@ -58,7 +58,7 @@ a year ago
 ★★★★★
 2 years ago
 
-> I have worked with the team at Gearhead Hats for a couple of years now. You will not find a better fitting hat than a Gearhead Hat. Their library of vintage patches is extremely impressive. The stitching and quality is professional ...
+> I have worked with the team at Gearhead Hats for a couple of years now. You will not find a better fitting hat than a Gearhead Hat. Their library of vintage patches is extremely impressive. The stitching and quality is professional grade. The finished product is truly a work of art and you can feel comfortable knowing your hat is an original - a 1 of 1. Keep up the great work. I’ll be using Gearhead for many years to come.
 
 ---
 
