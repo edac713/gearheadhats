@@ -1,42 +1,4 @@
-<style>
-  .review {
-    background: white;
-    padding: 20px;
-    margin-bottom: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  }
-  .initials-bg {
-    width: 50px;
-    height: 50px;
-    border-radius: 25px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-weight: bold;
-    margin-right: 15px;
-  }
-  .review-content {
-    flex-grow: 1;
-  }
-  .review-author {
-    font-size: 1.25rem;
-    margin-bottom: 0.25rem;
-  }
-  .review-date {
-    font-size: 0.875rem;
-    color: #6B7280;
-  }
-  .review-rating {
-    color: #F59E0B;
-    margin-bottom: 1rem;
-  }
-  .review-text {
-    color: #374151;
-  }
-</style>
-
+<!-- Liquid template remains unchanged as it's for dynamic content generation -->
 {% schema %}
 {
   "name": "Customer Reviews",
@@ -76,16 +38,89 @@
 }
 {% endschema %}
 
-{% for block in section.blocks %}
-<div class="review flex">
-<div class="initials-bg" style="background-color: {{ '6B7280,EF4444,F59E0B,10B981,3B82F6,6366F1,8B5CF6,EC4899' | split: ',' | sample }};">
-    {{ block.settings.author | split: ' ' | map: 'first' | join: '' }}
+<style>
+  .review-card-container {
+    padding: 5vw;
+  }
+
+  .review-card {
+    background-color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.025);
+    border-radius: 1.25em;
+    margin-bottom: 1em;
+    overflow: hidden;
+    padding: 1.5em;
+  }
+
+  .review-header {
+    display: flex;
+    align-items: start;
+  }
+
+  .initials-circle {
+    width: 1.85em;
+    height: 1.85em;
+    border-radius: 50%;
+    background-color: #3b82f6;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5em;
+    font-weight: 600;
+  }
+
+  .review-author {
+    font-weight: 500;
+    font-size: 1.1em;
+    color: #111827;
+    position: relative;
+    top: -0.25em; /* Adjust this value as needed to align with the top of the circle */
+    margin-left: 1em;
+  }
+
+  .review-details {
+    display: flex;
+    align-items: end;
+    position: relative;
+    bottom: 0.55em;
+    margin-left: 1em;
+  }
+
+  .review-rating {
+    color: #ffc107;
+    font-weight: bold;
+  }
+
+  .review-date {
+    color: #6b7280;
+    font-size: 0.875em;
+    margin-left: 0.5em;
+  }
+
+  .review-content {
+    color: black;
+    font-size: 1em;
+    margin-top: 0.5em;
+  }
+</style>
+
+<div class="review-card-container">
+  {% for block in section.blocks %}
+  <div class="review-card">
+    <div class="review-header">
+      <div class="initials-circle">
+        {{ block.settings.author | first }}
+      </div>
+      <div>
+        <div class="review-author">{{ block.settings.author }}</div>
+        <div class="review-details">
+          <div class="review-rating">★★★★★</div>
+          <div class="review-date">{{ block.settings.date }}</div>
+        </div>
+      </div>
+    </div>
+    <div class="review-content">{{ block.settings.content }}</div>
   </div>
-  <div class="review-content">
-    <p class="review-author">{{ block.settings.author }}</p>
-    <p class="review-date">{{ block.settings.date }}</p>
-    <p class="review-rating">★★★★★</p>
-    <blockquote class="review-text">{{ block.settings.content }}</blockquote>
-  </div>
+  {% endfor %}
 </div>
-{% endfor %}
