@@ -14,6 +14,11 @@
         .profile-bg {
             font-weight: 600;
         }
+
+        /* This ensures the image modal covers the entire screen */
+        .image-modal-bg {
+            background-color: rgba(0, 0, 0, 0.5);
+        }
     </style>
 </head>
 
@@ -44,13 +49,18 @@
         { initial: 'J', name: 'Julian Wilson', rating: 5, comment: 'Top notch company! Great communication from the owner of the company. Owner has great product with rare patches that make great gifts', date: '3 years ago' },
         { initial: 'T', name: 'Tim Knippenberg', rating: 5, comment: 'Lightning fast delivery, great quality product. Love these hats, I\’ll be back.', date: 'a year ago' }
       ],
-      randomBgColors: [
-  'bg-blue-500', 'bg-red-500', 'bg-green-500', 'bg-yellow-500', 'bg-purple-500',
-  'bg-indigo-500', 'bg-pink-500', 'bg-teal-500', 'bg-orange-500', 'bg-gray-500',
-  'bg-lime-500', 'bg-emerald-500', 'bg-cyan-500', 'bg-sky-500', 'bg-violet-500',
-  'bg-fuchsia-500', 'bg-rose-500', 'bg-amber-500', 'bg-lime-600', 'bg-emerald-600',
-  'bg-cyan-600', 'bg-sky-600', 'bg-violet-600', 'bg-fuchsia-600', 'bg-rose-600']
-    }">
+        randomBgColors: [
+        'bg-blue-500', 'bg-red-500', 'bg-green-500', 'bg-yellow-500', 'bg-purple-500',
+        'bg-indigo-500', 'bg-pink-500', 'bg-teal-500', 'bg-orange-500', 'bg-gray-500',
+        'bg-lime-500', 'bg-emerald-500', 'bg-cyan-500', 'bg-sky-500', 'bg-violet-500',
+        'bg-fuchsia-500', 'bg-rose-500', 'bg-amber-500', 'bg-lime-600', 'bg-emerald-600',
+        'bg-cyan-600', 'bg-sky-600', 'bg-violet-600', 'bg-fuchsia-600', 'bg-rose-600'],
+            imageModalOpen: false, 
+            modalImage: '',
+            truncateText(text) {
+            return text.length > 225 ? text.substring(0, 225) + '...' : text;
+                    }
+                    }">
             <template x-for="review in reviews" :key="review.name">
                 <div class="bg-white shadow-md rounded-lg p-4 mb-4">
                     <div class="flex items-center mb-1">
@@ -65,16 +75,41 @@
                             </div>
                         </div>
                     </div>
-                    <p class="text-gray-700 text-base" x-text="review.comment"></p>
-                    <div x-show="review.image" class="mt-3">
-                        <img :src="review.image" alt="" class="w-full rounded-lg aspect-video">
+                    <div x-data="{ expanded: false }">
+                        <p class="text-gray-700 text-base"
+                            x-text="expanded ? review.comment : truncateText(review.comment)"></p>
+                        <button x-show="review.comment.length > 225 && !expanded" class="text-blue-500 text-sm mt-4"
+                            x-on:click="expanded = true">Read more</button>
+                    </div>
+                    <div x-show="review.image" class="relative mt-3" style="padding-top: 56.25%;">
+                        <!-- Clickable image with object-cover to zoom and fill the space -->
+                        <img :src="review.image" alt="Review Image"
+                            class="absolute top-0 left-0 w-full h-full object-cover rounded-lg cursor-pointer"
+                            x-on:click="imageModalOpen = true, modalImage = review.image">
                     </div>
                 </div>
             </template>
-        </div>
-    </div>
 
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@^3.13.2/dist/cdn.min.js"></script>
+            <!-- Image modal -->
+            <div x-show="imageModalOpen" x-transition:enter="ease-out duration-300" x-transition:enter-start="opacity-0"
+                x-transition:enter-end="opacity-100" x-transition:leave="ease-in duration-200"
+                x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0"
+                class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50"
+                x-on:click.self="imageModalOpen = false">
+                <!-- Modal content with padding for spacing -->
+                <div class="relative p-5">
+                    <!-- Close button inside the area, positioned absolutely to the top-right of the image -->
+                    <button
+                        class="absolute top-0 right-0 text-white text-3xl leading-none z-50 p-2 bg-gray-600 bg-opacity-50 rounded-full focus:outline-none"
+                        x-on:click="imageModalOpen = false">
+                        &times;
+                    </button>
+                    <img :src="modalImage" class="rounded-lg object-contain mx-auto" alt="Modal Image"
+                        style="max-height: calc(100% - 2rem); max-width: calc(100% - 2rem);">
+                </div>
+            </div>
+        </div>
+        <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@^3.13.2/dist/cdn.min.js"></script>
 </body>
 
 </html>
