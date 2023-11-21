@@ -1,87 +1,91 @@
-<!DOCTYPE html>
-<html lang="en">
+<style>
+  .review {
+    background: white;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+  .initials-bg {
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    margin-right: 15px;
+  }
+  .review-content {
+    flex-grow: 1;
+  }
+  .review-author {
+    font-size: 1.25rem;
+    margin-bottom: 0.25rem;
+  }
+  .review-date {
+    font-size: 0.875rem;
+    color: #6B7280;
+  }
+  .review-rating {
+    color: #F59E0B;
+    margin-bottom: 1rem;
+  }
+  .review-text {
+    color: #374151;
+  }
+</style>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Customer Reviews</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        .star-rating {
-            color: #facc15;
+{% schema %}
+{
+  "name": "Customer Reviews",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "review",
+      "name": "Review Block",
+      "settings": [
+        {
+          "type": "text",
+          "id": "author",
+          "label": "Author Name",
+          "default": "John Capello"
+        },
+        {
+          "type": "text",
+          "id": "date",
+          "label": "Date of Review",
+          "default": "2 months ago"
+        },
+        {
+          "type": "textarea",
+          "id": "content",
+          "label": "Review Content",
+          "default": "Love these hats. It's my go to place to get custom hats with vintage patches sewn on!"
         }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Customer Reviews",
+      "category": "Customer"
+    }
+  ]
+}
+{% endschema %}
 
-        .profile-bg {
-            font-weight: 600;
-        }
-        
-        .image-modal-bg {
-            background-color: rgba(0, 0, 0, 0.5);
-        }
-    </style>
-</head>
-
-<body class="bg-gray-100">
-    <div class="max-w-md mx-auto p-6">
-        <div x-data="{ reviews: [
-        { initial: 'J', name: 'John Capello', rating: 5, comment: 'Love these hats. It\'s my go to place to get custom hats with vintage patches sewn on. This is my fourth hat and certainly not my last. I have purchased both premade and custom hats picking out by me. All great quality!', date: '2 months ago', image: 'https://cdn.shopify.com/s/files/1/0569/9295/6486/files/IMG_John_Capello.jpg?v=1700161670' },
-        { initial: 'J', name: 'Joseph Klotz', rating: 5, comment: 'Two great hats! The quality of the materials is good, and the work sewing the labels on was well done. I will buy from Gearhead Hats again.', date: 'a month ago' }
-      ],
-        randomBgColors: [
-        'bg-blue-500', 'bg-red-500', 'bg-green-500', 'bg-yellow-500', 'bg-purple-500', 'bg-indigo-500', 'bg-pink-500', 'bg-teal-500', 'bg-orange-500', 'bg-gray-500'
-        ],
-        imageModalOpen: false, 
-        modalImage: '',
-        truncateText(text) {
-        return text.length > 225 ? text.substring(0, 225) + '...' : text;
-        }
-        }">
-            <template x-for="review in reviews" :key="review.name">
-                <div class="bg-white shadow-md rounded-lg p-4 mb-4">
-                    <div class="flex items-center mb-1">
-                        <div class="flex-shrink-0 rounded-full text-white font-medium h-10 w-10 flex items-center justify-center mr-3 profile-bg"
-                            :class="randomBgColors[Math.floor(Math.random() * randomBgColors.length)]"
-                            x-text="review.initial"></div>
-                        <div class="flex-1 min-w-0">
-                            <p class="text-base font-semibold text-gray-900" x-text="review.name"></p>
-                            <div class="flex items-center text-xs text-gray-500 mt-1">
-                                <div class="star-rating text-sm" x-html="'★'.repeat(review.rating)"></div>
-                                <p class="ml-1" x-text="review.date"></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div x-data="{ expanded: false }">
-                        <p class="text-gray-700 text-base"
-                            x-text="expanded ? review.comment : truncateText(review.comment)"></p>
-                        <button x-show="review.comment.length > 225 && !expanded" class="text-blue-500 text-sm mt-4"
-                            x-on:click="expanded = true">Read more</button>
-                    </div>
-                    <div x-show="review.image" class="relative mt-3" style="padding-top: 56.25%;">
-                        <img :src="review.image" alt="Review Image"
-                            class="absolute top-0 left-0 w-full h-full object-cover rounded-lg cursor-pointer"
-                            x-on:click="imageModalOpen = true, modalImage = review.image">
-                    </div>
-                </div>
-            </template>
-
-            <!-- Image modal -->
-            <div x-show="imageModalOpen" x-transition:enter="ease-out duration-300" x-transition:enter-start="opacity-0"
-                x-transition:enter-end="opacity-100" x-transition:leave="ease-in duration-200"
-                x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0"
-                class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50"
-                x-on:click.self="imageModalOpen = false">
-                <div class="relative p-5">
-                    <button
-                        class="absolute top-0 right-0 text-white text-3xl leading-none z-50 p-2 bg-gray-600 bg-opacity-50 rounded-full focus:outline-none"
-                        x-on:click="imageModalOpen = false">
-                        &times;
-                    </button>
-                    <img :src="modalImage" class="rounded-lg object-contain mx-auto" alt="Modal Image"
-                        style="max-height: calc(100% - 2rem); max-width: calc(100% - 2rem);">
-                </div>
-            </div>
-        </div>
-        <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@^3.13.2/dist/cdn.min.js"></script>
-</body>
-
-</html>
+{% for block in section.blocks %}
+<div class="review flex">
+<div class="initials-bg" style="background-color: {{ '6B7280,EF4444,F59E0B,10B981,3B82F6,6366F1,8B5CF6,EC4899' | split: ',' | sample }};">
+    {{ block.settings.author | split: ' ' | map: 'first' | join: '' }}
+  </div>
+  <div class="review-content">
+    <p class="review-author">{{ block.settings.author }}</p>
+    <p class="review-date">{{ block.settings.date }}</p>
+    <p class="review-rating">★★★★★</p>
+    <blockquote class="review-text">{{ block.settings.content }}</blockquote>
+  </div>
+</div>
+{% endfor %}
