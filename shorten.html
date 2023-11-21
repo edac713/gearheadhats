@@ -57,7 +57,6 @@
                             x-on:click="expanded = true">Read more</button>
                     </div>
                     <div x-show="review.image" class="relative mt-3" style="padding-top: 56.25%;">
-                        <!-- Clickable image with object-cover to zoom and fill the space -->
                         <img :src="review.image" alt="Review Image"
                             class="absolute top-0 left-0 w-full h-full object-cover rounded-lg cursor-pointer"
                             x-on:click="imageModalOpen = true, modalImage = review.image">
