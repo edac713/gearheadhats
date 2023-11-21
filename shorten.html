@@ -28,17 +28,14 @@
         { initial: 'J', name: 'Joseph Klotz', rating: 5, comment: 'Two great hats! The quality of the materials is good, and the work sewing the labels on was well done. I will buy from Gearhead Hats again.', date: 'a month ago' }
       ],
         randomBgColors: [
-        'bg-blue-500', 'bg-red-500', 'bg-green-500', 'bg-yellow-500', 'bg-purple-500',
-        'bg-indigo-500', 'bg-pink-500', 'bg-teal-500', 'bg-orange-500', 'bg-gray-500',
-        'bg-lime-500', 'bg-emerald-500', 'bg-cyan-500', 'bg-sky-500', 'bg-violet-500',
-        'bg-fuchsia-500', 'bg-rose-500', 'bg-amber-500', 'bg-lime-600', 'bg-emerald-600',
-        'bg-cyan-600', 'bg-sky-600', 'bg-violet-600', 'bg-fuchsia-600', 'bg-rose-600'],
-            imageModalOpen: false, 
-            modalImage: '',
-            truncateText(text) {
-            return text.length > 225 ? text.substring(0, 225) + '...' : text;
-                    }
-                    }">
+        'bg-blue-500', 'bg-red-500', 'bg-green-500', 'bg-yellow-500', 'bg-purple-500', 'bg-indigo-500', 'bg-pink-500', 'bg-teal-500', 'bg-orange-500', 'bg-gray-500'
+        ],
+        imageModalOpen: false, 
+        modalImage: '',
+        truncateText(text) {
+        return text.length > 225 ? text.substring(0, 225) + '...' : text;
+        }
+        }">
             <template x-for="review in reviews" :key="review.name">
                 <div class="bg-white shadow-md rounded-lg p-4 mb-4">
                     <div class="flex items-center mb-1">
