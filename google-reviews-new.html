@@ -56,19 +56,18 @@
             imageModalOpen: false, 
             modalImage: '',
             truncateText(text) {
-            return text.length > 240 ? text.substring(0, 240) + '...' : text;
-                    }
-                    }">
-           <template x-for="review in reviews" :key="review.name">
-                <div class="bg-white shadow-md rounded-lg p-4 mb-4">
-                    <div class="flex items-center mb-1">
-                        <div class="flex-shrink-0 rounded-full text-white font-medium h-10 w-10 flex items-center justify-center mr-3 profile-bg"
-                            :class="randomBgColors[Math.floor(Math.random() * randomBgColors.length)]"
-                            x-text="review.initial"></div>
-                        <div class="flex-1 min-w-0">
-                            <p class="text-base font-semibold text-gray-900" x-text="review.name"></p>
-                            <div class="flex items-center text-xs text-gray-500 mt-1">
-                                <div class="star-rating text-sm" x-html="'★'.repeat(review.rating)"></div>
+            return text.length > 240 ? text.substring(0, 240) + '...' : text;}
+}">
+<template x-for="review in reviews" :key="review.name">
+    <div class="bg-white shadow-md rounded-lg p-4 mb-4">
+        <div class="flex items-center mb-1">
+            <div class="flex-shrink-0 rounded-full text-white font-medium h-10 w-10 flex items-center justify-center mr-3 profile-bg"
+            :class="randomBgColors[Math.floor(Math.random() * randomBgColors.length)]"
+            x-text="review.initial"></div>
+                <div class="flex-1 min-w-0">
+                    <p class="text-base font-semibold text-gray-900" x-text="review.name"></p>
+                        <div class="flex items-center text-xs text-gray-500 mt-1">
+                            <div class="star-rating text-sm" x-html="'★'.repeat(review.rating)"></div>
                                 <p class="ml-1" x-text="review.date"></p>
                             </div>
                         </div>
