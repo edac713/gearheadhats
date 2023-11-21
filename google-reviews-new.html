@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Customer Reviews</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .star-rating {
+      color: #facc15;
+    }
+    .profile-bg {
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body class="bg-gray-100">
+  <div class="max-w-md mx-auto p-6">
+    <div x-data="{ reviews: [
+        { initial: 'B', name: 'Ben Klotz', rating: 5, comment: 'Two great hats! The quality of the materials is good, and the work sewing the labels on was well done. I will buy from Gearheadhats again. great quality!', date: 'a month ago' },
+        { initial: 'J', name: 'John Capello', rating: 5, comment: 'Love these hats. It\'s my go to place to get custom hats with vintage patches sewn on. This is my fourth hat and certainly not my last. I have purchased both premade and custom hats picking out by me. All great quality!', date: '2 months ago', image: 'https://placehold.co/600x338' },
+      ],
+      randomBgColors: ['bg-blue-500', 'bg-red-500', 'bg-green-500', 'bg-yellow-500', 'bg-purple-500']
+    }">
+      <template x-for="review in reviews" :key="review.name">
+        <div class="bg-white shadow-md rounded-lg p-5 mb-5">
+          <div class="flex items-center mb-2">
+            <div class="flex-shrink-0 rounded-full text-white font-medium h-12 w-12 flex items-center justify-center mr-3 profile-bg" 
+                 :class="randomBgColors[Math.floor(Math.random() * randomBgColors.length)]"
+                 x-text="review.initial"></div>
+            <div class="flex-1 min-w-0">
+              <p class="text-lg font-semibold text-gray-900" x-text="review.name"></p>
+              <div class="flex items-center text-sm text-gray-500 mt-1">
+                <div class="star-rating" x-html="'★'.repeat(review.rating)"></div>
+                <p class="font-semibold ml-1" x-text="review.date"></p>
+              </div>
+            </div>
+          </div>
+          <p class="text-gray-700 text-lg" x-text="review.comment"></p>
+          <div x-show="review.image" class="mt-3">
+            <img :src="review.image" alt="" class="w-full rounded-lg aspect-video">
+          </div>
+        </div>
+      </template>
+    </div>
+  </div>
+
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@^3.13.2/dist/cdn.min.js"></script>
+</body>
+</html>
