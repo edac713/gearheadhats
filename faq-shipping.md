@@ -1,3 +1,6 @@
+# Frequently asked questions for `Gearheadhats.com`
+
+```markdown
 # FAQ’s
 ## Are the patches we sell vintage? 
 Yes, we only offer vintage patches which make this a unique experience.
@@ -17,3 +20,5 @@ We will eventually provide a service like that but no not currently, our initial
 - We use USPS and will ship everything First class which includes tracking. 
 - Cost: $4 for 1st hat and $1 each for any additional hats 
 - No international shipments at this time
+
+```
