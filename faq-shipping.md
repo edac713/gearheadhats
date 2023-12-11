@@ -1,4 +1,4 @@
-# Frequently asked questions for `Gearheadhats.com`
+# Frequently asked questions for https://gearheadhats.com
 
 ```markdown
 # FAQ’s
