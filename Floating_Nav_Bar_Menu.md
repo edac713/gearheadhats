@@ -1,3 +1,4 @@
+```liquid
 <style>
     /* Base styles for floating nav bar menu */
     .floating-menu, .floating-menu-section {
@@ -466,3 +467,4 @@
     }
   });
 </script>
+```
